@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'complaint_screen.dart';
+import 'track_complaints_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -28,10 +30,7 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
                 'Your AI-Powered Hostel Assistant',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.white70,
-                ),
+                style: TextStyle(fontSize: 14, color: Colors.white70),
               ),
             ),
 
@@ -66,7 +65,12 @@ class HomeScreen extends StatelessWidget {
                       label: 'Submit Complaint',
                       color: Colors.deepPurpleAccent,
                       onTap: () {
-                        // navigation
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ComplaintScreen(),
+                          ),
+                        );
                       },
                     ),
                     _DashboardTile(
@@ -75,6 +79,19 @@ class HomeScreen extends StatelessWidget {
                       color: Colors.purpleAccent,
                       onTap: () {
                         // navigation
+                      },
+                    ),
+                    _DashboardTile(
+                      icon: Icons.receipt_long,
+                      label: 'Track Complaints',
+                      color: Colors.lightBlueAccent,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const TrackComplaintsScreen(),
+                          ),
+                        );
                       },
                     ),
                   ],
@@ -95,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -136,13 +153,10 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: 4),
                 Text(
                   'Roll No: B21000XXX',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.white70,
-                  ),
+                  style: TextStyle(fontSize: 14, color: Colors.white70),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -155,6 +169,7 @@ class HomeScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Container(
         decoration: BoxDecoration(
+          // ignore: deprecated_member_use
           border: Border.all(color: Colors.deepPurpleAccent.withOpacity(0.3)),
           borderRadius: BorderRadius.circular(16),
           color: const Color.fromARGB(26, 132, 83, 83),
@@ -173,10 +188,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 6),
-            Text(
-              'Room No: G-314',
-              style: TextStyle(color: Colors.white70),
-            ),
+            Text('Room No: G-314', style: TextStyle(color: Colors.white70)),
             SizedBox(height: 6),
             Text(
               'Caretaker: 98******10',
