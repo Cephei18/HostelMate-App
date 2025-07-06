@@ -84,9 +84,17 @@ _(Add later once UI screens are finalized)_
 ## 📬 Contact
 
 **Developer**: Gopika Chauhan  
-**Email**: [youremail@example.com]  
-**LinkedIn**: [your-linkedin]  
-**GitHub**: [yourusername]
+**Email**: gopikachauhan1819@gmailcom  
+**LinkedIn**: https://www.linkedin.com/in/gopika-chauhan18/
+**GitHub**: Cephei18
 
 ---
 
+// COMMENTS
+// PUSH
+git add .
+git commit -m "Update section"
+git push origin main
+
+//PULL
+git pull origin main
