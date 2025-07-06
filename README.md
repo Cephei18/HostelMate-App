@@ -1,16 +1,92 @@
-# hosthelp
+# HostelMate
 
-A new Flutter project.
+**HostelMate** is a smart mobile solution designed to streamline hostel maintenance and lost & found systems for students and caretakers. Initially developed for IIT Mandi, the app addresses real-world inefficiencies in handling complaints and recovering lost items using Firebase and AI technologies.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🔍 Problem Statement
 
-A few resources to get you started if this is your first Flutter project:
+In many hostels, maintenance issues are reported informally — through WhatsApp groups, verbal communication, or handwritten logs — leading to:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Lost or ignored complaints
+- No transparency or tracking
+- Slow resolution cycles
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Additionally, there is no central system for managing **lost & found** items, a frequent issue in hostel environments.
+
+---
+
+## ✅ Solution Overview
+
+**HostelMate** provides two key features:
+
+### 1. Maintenance Complaint System
+- Submit complaints with category, description, and image
+- Track the status of complaints: Pending → In Progress → Resolved
+- Admin dashboard for caretakers and wardens
+
+### 2. Lost & Found Portal
+- Upload details and image of lost/found items
+- AI-assisted tagging and smart match suggestions using Gemini API
+- View matched and recent posts easily
+
+---
+
+## 🛠️ Tech Stack
+
+| Feature                | Technology                      |
+|------------------------|----------------------------------|
+| Cross-platform UI      | Flutter                         |
+| Backend/Database       | Firebase Firestore               |
+| Authentication         | Firebase Auth                   |
+| Hosting/API            | Firebase Hosting, Cloud Functions |
+| AI Integration         | Gemini API                      |
+| Development Platform   | Visual Studio Code, Android Emulator |
+
+---
+
+## 🎯 Target Users
+
+- **Students**: Easily file complaints, track resolutions, and recover lost items.
+- **Caretakers/Wardens**: Manage assigned complaints, update statuses, and track workload.
+
+---
+
+## 🚧 Current Status
+
+- ✅ Core UI dashboard implemented
+- 🟡 Complaint & Lost/Found screens under development
+- 🔜 Firebase integration (Auth + Firestore)
+- 🔜 AI-powered tagging and matching
+
+---
+
+## 🧠 Why This Matters
+
+This project was born out of personal experience as a former **Maintenance Coordinator at IIT Mandi**. HostelMate solves a high-friction, real-world problem using modern cloud and AI technology.
+
+---
+
+## 📌 Project Goals
+
+- Improve transparency and efficiency in hostel issue management
+- Centralize lost and found reporting
+- Demonstrate meaningful application of Google’s ecosystem through GDG Lead application
+
+---
+
+## 📸 Screenshots
+
+_(Add later once UI screens are finalized)_
+
+---
+
+## 📬 Contact
+
+**Developer**: Gopika Chauhan  
+**Email**: [youremail@example.com]  
+**LinkedIn**: [your-linkedin]  
+**GitHub**: [yourusername]
+
+---
+
