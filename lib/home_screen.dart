@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'complaint_screen.dart';
 import 'track_complaints_screen.dart';
+import 'lostfound_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -78,9 +79,15 @@ class HomeScreen extends StatelessWidget {
                       label: 'Lost & Found',
                       color: Colors.purpleAccent,
                       onTap: () {
-                        // navigation
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LostFoundScreen(),
+                          ),
+                        );
                       },
                     ),
+
                     _DashboardTile(
                       icon: Icons.receipt_long,
                       label: 'Track Complaints',
