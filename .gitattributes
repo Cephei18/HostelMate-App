@@ -1,0 +1,11 @@
+# Ignore Flutter platform folders and build files
+android/* linguist-vendored
+ios/* linguist-vendored
+web/* linguist-vendored
+macos/* linguist-vendored
+windows/* linguist-vendored
+linux/* linguist-vendored
+build/* linguist-vendored
+
+# If you use any custom generated files
+*.lock linguist-generated
