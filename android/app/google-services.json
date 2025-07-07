@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "375494999168",
+    "project_id": "hostelmate-35544",
+    "storage_bucket": "hostelmate-35544.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375494999168:android:8f990dcb8b79e8ecff7a65",
+        "android_client_info": {
+          "package_name": "com.example.hosthelp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUffU1vqT1NsUSO5mEQKWSh2AQqM3raTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

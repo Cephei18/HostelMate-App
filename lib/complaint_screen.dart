@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ComplaintScreen extends StatefulWidget {
   const ComplaintScreen({super.key});
@@ -49,7 +50,10 @@ class _ComplaintScreenState extends State<ComplaintScreen> {
               items: categories.map((String category) {
                 return DropdownMenuItem<String>(
                   value: category,
-                  child: Text(category, style: const TextStyle(color: Colors.white)),
+                  child: Text(
+                    category,
+                    style: const TextStyle(color: Colors.white),
+                  ),
                 );
               }).toList(),
               onChanged: (String? value) {
@@ -84,11 +88,50 @@ class _ComplaintScreenState extends State<ComplaintScreen> {
                   backgroundColor: const Color.fromARGB(255, 196, 191, 228),
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
-                onPressed: () {
-                  // TODO: Handle submit
-                  print('Category: $selectedCategory');
-                  print('Description: ${descriptionController.text}');
+                onPressed: () async {
+                  final category = selectedCategory;
+                  final description = descriptionController.text;
+
+                  if (category != null && description.isNotEmpty) {
+                    print('📤 Submitting complaint...');
+                    try {
+                      await FirebaseFirestore.instance
+                          .collection('complaints')
+                          .add({
+                            'category': category,
+                            'description': description,
+                            'status': 'Pending',
+                            'timestamp': Timestamp.now(),
+                          });
+
+                      print('✅ Complaint added to Firestore.');
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Complaint submitted successfully'),
+                        ),
+                      );
+
+                      setState(() {
+                        selectedCategory = null;
+                        descriptionController.clear();
+                      });
+                    } catch (e) {
+                      print('❌ Firestore error: $e');
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Error submitting complaint: $e'),
+                        ),
+                      );
+                    }
+                  } else {
+                    print('⚠️ Form incomplete');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Please complete the form')),
+                    );
+                  }
                 },
+
                 child: const Text('Submit Complaint'),
               ),
             ),
