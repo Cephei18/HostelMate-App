@@ -1,6 +1,6 @@
 # HostelMate
 
-**HostelMate** is a smart mobile solution designed to streamline hostel maintenance and lost & found systems for students and caretakers. Initially developed for IIT Mandi, the app addresses real-world inefficiencies in handling complaints and recovering lost items using Firebase and AI technologies.
+**HostelMate** is a smart mobile solution designed to streamline hostel maintenance and lost & found systems for students and caretakers.The app addresses real-world inefficiencies in handling complaints and recovering lost items using Firebase and AI technologies.
 
 ---
 
@@ -40,7 +40,6 @@ Additionally, there is no central system for managing **lost & found** items, a 
 | Backend/Database       | Firebase Firestore               |
 | Authentication         | Firebase Auth                   |
 | Hosting/API            | Firebase Hosting, Cloud Functions |
-| AI Integration         | Gemini API                      |
 | Development Platform   | Visual Studio Code, Android Emulator |
 
 ---
@@ -77,8 +76,8 @@ This project was born out of personal experience as a former **Maintenance Coord
 
 ## 📸 Screenshots
 
-_(Add later once UI screens are finalized)_
-
+![alt text](image.png)
+![alt text](image-1.png)
 ---
 
 ## 📬 Contact

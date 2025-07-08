@@ -157,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       _DashboardTile(
                         icon: Icons.food_bank,
                         label: 'Mess Details',
-                        color: Colors.orangeAccent,
+                        color: const Color.fromARGB(255, 216, 118, 243),
                         onTap: () {
                           // Placeholder for notifications functionality
                           ScaffoldMessenger.of(context).showSnackBar(
