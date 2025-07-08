@@ -107,6 +107,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                       _DashboardTile(
+                        icon: Icons.notifications,
+                        label: 'Hostel Calender',
+                        color: Colors.orangeAccent,
+                        onTap: () {
+                          // Placeholder for notifications functionality
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Calender feature coming soon!')),
+                          );
+                        },
+                      ),
+          
+                      _DashboardTile(
                         icon: Icons.receipt_long,
                         label: 'Track Complaints',
                         color: Colors.lightBlueAccent,
@@ -116,6 +128,52 @@ class _HomeScreenState extends State<HomeScreen> {
                             MaterialPageRoute(
                               builder: (context) => const TrackComplaintsScreen(),
                             ),
+                          );
+                        },
+                      ),
+                      _DashboardTile(
+                        icon: Icons.feedback,
+                        label: 'Feedback',
+                        color: const Color.fromARGB(255, 107, 148, 228),
+                        onTap: () {
+                          // Placeholder for notifications functionality
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Feedback feature coming soon!')),
+                          );
+                        },
+                      ),
+                      _DashboardTile(
+                        icon: Icons.settings,
+                        label: 'Settings',
+                        color: Colors.greenAccent,
+                        onTap: () {
+                          // Placeholder for settings functionality
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Settings feature coming soon!')),
+                          );
+                        },
+                      ),
+                      //feedback form
+                      _DashboardTile(
+                        icon: Icons.food_bank,
+                        label: 'Mess Details',
+                        color: Colors.orangeAccent,
+                        onTap: () {
+                          // Placeholder for notifications functionality
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Mess feature coming soon!')),
+                          );
+                        },
+                      ),
+                      //Important Contacts
+                      _DashboardTile(
+                        icon: Icons.contact_phone,
+                        label: 'Important Contacts',
+                        color: Colors.redAccent,
+                        onTap: () {
+                          // Placeholder for important contacts functionality
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Contacts feature coming soon!')),
                           );
                         },
                       ),
