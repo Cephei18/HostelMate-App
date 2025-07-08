@@ -89,11 +89,3 @@ This project was born out of personal experience as a former **Maintenance Coord
 
 ---
 
-// COMMENTS
-// PUSH
-git add .
-git commit -m "Update section"
-git push origin main
-
-//PULL
-git pull origin main
