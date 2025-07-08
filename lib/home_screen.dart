@@ -270,7 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Text('Room No: $room', style: const TextStyle(color: Colors.white70)),
             const SizedBox(height: 6),
             const Text(
-              'Caretaker: 98******10',
+              'Caretaker Mrs Parul: 900235610',
               style: TextStyle(color: Colors.white70),
             ),
           ],
