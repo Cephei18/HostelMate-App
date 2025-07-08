@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hosthelp/track_complaints_screen.dart';
 
 class ComplaintScreen extends StatefulWidget {
   const ComplaintScreen({super.key});
@@ -93,18 +95,32 @@ class _ComplaintScreenState extends State<ComplaintScreen> {
                   final description = descriptionController.text;
 
                   if (category != null && description.isNotEmpty) {
-                    print('📤 Submitting complaint...');
                     try {
+                      final prefs = await SharedPreferences.getInstance();
+                      final roll = prefs.getString('roll');
+
+                      if (roll == null || roll.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'User roll not found. Please set up your profile again.',
+                            ),
+                          ),
+                        );
+                        return;
+                      }
+
                       await FirebaseFirestore.instance
                           .collection('complaints')
                           .add({
                             'category': category,
                             'description': description,
                             'status': 'Pending',
-                            'timestamp': Timestamp.now(),
+                            'comments': [],
+                            'assignedTo': '',
+                            'timestamp': FieldValue.serverTimestamp(),
+                            'roll': roll, // ✅ Correct roll number now
                           });
-
-                      print('✅ Complaint added to Firestore.');
 
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
@@ -118,14 +134,11 @@ class _ComplaintScreenState extends State<ComplaintScreen> {
                       });
                     } catch (e) {
                       print('❌ Firestore error: $e');
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Error submitting complaint: $e'),
-                        ),
-                      );
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text('Error: $e')));
                     }
                   } else {
-                    print('⚠️ Form incomplete');
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Please complete the form')),
                     );

@@ -1,20 +1,51 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class TrackComplaintsScreen extends StatelessWidget {
+class TrackComplaintsScreen extends StatefulWidget {
   const TrackComplaintsScreen({super.key});
 
   @override
+  State<TrackComplaintsScreen> createState() => _TrackComplaintsScreenState();
+}
+
+class _TrackComplaintsScreenState extends State<TrackComplaintsScreen> {
+  String? userRoll;
+
+  @override
+  void initState() {
+    super.initState();
+    loadRoll();
+  }
+
+  Future<void> loadRoll() async {
+    final prefs = await SharedPreferences.getInstance();
+    final roll = prefs.getString('roll');
+    setState(() {
+      userRoll = roll;
+    });
+    print("🔍 Loaded roll number: $roll");
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (userRoll == null) {
+      return const Scaffold(
+        backgroundColor: Color(0xFF1F1D2B),
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
     return Scaffold(
+      backgroundColor: const Color(0xFF1F1D2B),
       appBar: AppBar(
-        title: const Text('Track Complaints'),
+        title: const Text('Your Complaints'),
         backgroundColor: const Color(0xFF6A5AE0),
       ),
-      backgroundColor: const Color(0xFF1F1D2B),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('complaints')
+            .where('roll', isEqualTo: userRoll)
             .orderBy('timestamp', descending: true)
             .snapshots(),
         builder: (context, snapshot) {
@@ -24,10 +55,8 @@ class TrackComplaintsScreen extends StatelessWidget {
 
           if (snapshot.hasError) {
             return const Center(
-              child: Text(
-                'Error fetching complaints',
-                style: TextStyle(color: Colors.white),
-              ),
+              child: Text('Error loading complaints.',
+                  style: TextStyle(color: Colors.white)),
             );
           }
 
@@ -37,7 +66,7 @@ class TrackComplaintsScreen extends StatelessWidget {
             return const Center(
               child: Text(
                 'No complaints found.',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white70),
               ),
             );
           }
@@ -46,22 +75,19 @@ class TrackComplaintsScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             itemCount: complaints.length,
             itemBuilder: (context, index) {
-              final doc = complaints[index];
-              final data = doc.data() as Map<String, dynamic>;
+              final data =
+                  complaints[index].data() as Map<String, dynamic>? ?? {};
 
               final category = data['category'] ?? '';
               final description = data['description'] ?? '';
-              final status = data['status'] ?? '';
-              final assignedTo = data.containsKey('assignedTo')
-                  ? data['assignedTo']
-                  : 'Not assigned';
-              final comments = data['comments'] != null
-                  ? List<String>.from(data['comments'])
-                  : <String>[];
+              final status = data['status'] ?? 'Pending';
+              final assignedTo = data['assignedTo'] ?? 'Not assigned';
+              final comments = List<String>.from(data['comments'] ?? []);
               final timestamp = (data['timestamp'] as Timestamp?)?.toDate();
               final dateStr = timestamp != null
                   ? '${timestamp.year}-${timestamp.month.toString().padLeft(2, '0')}-${timestamp.day.toString().padLeft(2, '0')}'
                   : 'Unknown';
+
               return Card(
                 color: Colors.white10,
                 shape: RoundedRectangleBorder(
@@ -133,7 +159,7 @@ class TrackComplaintsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStatusBadge(String? status) {
+  Widget _buildStatusBadge(String status) {
     Color badgeColor;
     switch (status) {
       case 'Pending':
@@ -156,7 +182,7 @@ class TrackComplaintsScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
-        status ?? '',
+        status,
         style: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
@@ -166,4 +192,3 @@ class TrackComplaintsScreen extends StatelessWidget {
     );
   }
 }
-

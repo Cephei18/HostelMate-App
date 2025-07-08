@@ -2,131 +2,147 @@ import 'package:flutter/material.dart';
 import 'complaint_screen.dart';
 import 'track_complaints_screen.dart';
 import 'lostfound_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String name = '';
+  String roll = '';
+  String hostel = '';
+  String room = '';
+
+  @override
+  void initState() {
+    super.initState();
+    loadUserData();
+  }
+
+  Future<void> loadUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      name = prefs.getString('name') ?? '';
+      roll = prefs.getString('roll') ?? '';
+      hostel = prefs.getString('hostel') ?? '';
+      room = prefs.getString('room') ?? '';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF1F1D2B),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // App Name
-            const Padding(
-              padding: EdgeInsets.fromLTRB(20, 20, 20, 8),
-              child: Text(
-                'HostelMate',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  letterSpacing: 1.2,
-                ),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                'Your AI-Powered Hostel Assistant',
-                style: TextStyle(fontSize: 14, color: Colors.white70),
-              ),
-            ),
-
-            const SizedBox(height: 16),
-
-            // 👤 Profile Section
-            sectionLabel('👤 Your Profile'),
-            profileCard(),
-
-            const SizedBox(height: 16),
-
-            // 🏠 Hostel Info Section
-            sectionLabel('🏠 Hostel Details'),
-            hostelCard(),
-
-            const SizedBox(height: 20),
-
-            // ⚙️ Tools
-            sectionLabel('⚙️ Dashboard Tools'),
-
-            // Tiles
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20,
-                  children: [
-                    _DashboardTile(
-                      icon: Icons.build,
-                      label: 'Submit Complaint',
-                      color: Colors.deepPurpleAccent,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ComplaintScreen(),
-                          ),
-                        );
-                      },
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 8),
+                  child: Text(
+                    'HostelMate',
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      letterSpacing: 1.2,
                     ),
-                    _DashboardTile(
-                      icon: Icons.search,
-                      label: 'Lost & Found',
-                      color: Colors.purpleAccent,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LostFoundScreen(),
-                          ),
-                        );
-                      },
-                    ),
-
-                    _DashboardTile(
-                      icon: Icons.receipt_long,
-                      label: 'Track Complaints',
-                      color: Colors.lightBlueAccent,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const TrackComplaintsScreen(),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            // Footer
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 12),
-              child: Center(
-                child: Text(
-                  '🧠 HostelMate – Your AI-Powered Hostel Assistant',
-                  style: TextStyle(
-                    color: Colors.white54,
-                    fontSize: 12,
-                    fontStyle: FontStyle.italic,
                   ),
                 ),
-              ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Text(
+                    'Your AI-Powered Hostel Assistant',
+                    style: TextStyle(fontSize: 14, color: Colors.white70),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                sectionLabel('👤 Your Profile'),
+                profileCard(),
+                const SizedBox(height: 16),
+                sectionLabel('🏠 Hostel Details'),
+                hostelCard(),
+                const SizedBox(height: 20),
+                sectionLabel('⚙️ Dashboard Tools'),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      _DashboardTile(
+                        icon: Icons.build,
+                        label: 'Submit Complaint',
+                        color: Colors.deepPurpleAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ComplaintScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      _DashboardTile(
+                        icon: Icons.search,
+                        label: 'Lost & Found',
+                        color: Colors.purpleAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LostFoundScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      _DashboardTile(
+                        icon: Icons.receipt_long,
+                        label: 'Track Complaints',
+                        color: Colors.lightBlueAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const TrackComplaintsScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                  child: Center(
+                    child: Text(
+                      '🧠 HostelMate – Your AI-Powered Hostel Assistant',
+                      style: TextStyle(
+                        color: Colors.white54,
+                        fontSize: 12,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 
-  // 👤 Profile Card Widget
   Widget profileCard() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -148,19 +164,19 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(width: 16),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
-                  'Gopika Chauhan',
-                  style: TextStyle(
+                  name,
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
-                  'Roll No: B21000XXX',
-                  style: TextStyle(fontSize: 14, color: Colors.white70),
+                  'Roll No: $roll',
+                  style: const TextStyle(fontSize: 14, color: Colors.white70),
                 ),
               ],
             ),
@@ -170,13 +186,11 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // 🏠 Hostel Card Widget
   Widget hostelCard() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Container(
         decoration: BoxDecoration(
-          // ignore: deprecated_member_use
           border: Border.all(color: Colors.deepPurpleAccent.withOpacity(0.3)),
           borderRadius: BorderRadius.circular(16),
           color: const Color.fromARGB(26, 132, 83, 83),
@@ -185,19 +199,19 @@ class HomeScreen extends StatelessWidget {
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text(
-              'Hostel: Gaurikund Girls Hostel',
-              style: TextStyle(
+              'Hostel: $hostel',
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            SizedBox(height: 6),
-            Text('Room No: G-314', style: TextStyle(color: Colors.white70)),
-            SizedBox(height: 6),
-            Text(
+            const SizedBox(height: 6),
+            Text('Room No: $room', style: const TextStyle(color: Colors.white70)),
+            const SizedBox(height: 6),
+            const Text(
               'Caretaker: 98******10',
               style: TextStyle(color: Colors.white70),
             ),
@@ -207,7 +221,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // Section Label
   Widget sectionLabel(String title) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 8, 20, 6),
@@ -223,7 +236,6 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-// 🔘 Tile Widget
 class _DashboardTile extends StatelessWidget {
   final IconData icon;
   final String label;
@@ -271,4 +283,3 @@ class _DashboardTile extends StatelessWidget {
     );
   }
 }
-
