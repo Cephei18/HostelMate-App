@@ -1,91 +1,116 @@
-# HostelMate
+# 🏠 HostelMate
 
-**HostelMate** is a smart mobile solution designed to streamline hostel maintenance and lost & found systems for students and caretakers.The app addresses real-world inefficiencies in handling complaints and recovering lost items using Firebase and AI technologies.
+**HostelMate** is a smart mobile app that streamlines hostel complaint handling and lost & found management using **Firebase**, **Flutter**, and **Google AI technologies**. It was created to solve real-world inefficiencies of Hostel Maintenence System.
 
 ---
 
 ## 🔍 Problem Statement
 
-In many hostels, maintenance issues are reported informally — through WhatsApp groups, verbal communication, or handwritten logs — leading to:
+In most hostels, complaints are handled informally through:
 
-- Lost or ignored complaints
-- No transparency or tracking
-- Slow resolution cycles
+- WhatsApp groups or paper logs  
+- No tracking, status, or escalation  
+- Lost items are rarely returned due to lack of system
 
-Additionally, there is no central system for managing **lost & found** items, a frequent issue in hostel environments.
+These lead to frustration, delays, and a lack of accountability.
 
 ---
 
-## ✅ Solution Overview
+## ✅ Our Solution
 
-**HostelMate** provides two key features:
-
-### 1. Maintenance Complaint System
+### 🛠 Maintenance Complaint System
 - Submit complaints with category, description, and image
-- Track the status of complaints: Pending → In Progress → Resolved
-- Admin dashboard for caretakers and wardens
+- Track status: **Pending → In Progress → Resolved**
+- Admin dashboard for caretakers to update statuses
 
-### 2. Lost & Found Portal
-- Upload details and image of lost/found items
-- AI-assisted tagging and smart match suggestions using Gemini API
-- View matched and recent posts easily
+### 🧳 Lost & Found Portal
+- Post lost or found items with photos
+- AI-assisted tagging using **Gemini API**
+- Smart match suggestions and recent activity
 
----
-
-## 🛠️ Tech Stack
-
-| Feature                | Technology                      |
-|------------------------|----------------------------------|
-| Cross-platform UI      | Flutter                         |
-| Backend/Database       | Firebase Firestore               |
-| Authentication         | Firebase Auth                   |
-| Hosting/API            | Firebase Hosting, Cloud Functions |
-| Development Platform   | Visual Studio Code, Android Emulator |
+### 🤖 Gemini AI-Powered Hostel Bot
+- A futuristic chatbot built using **Google Gemini API**
+- Users can ask hostel-related questions like rules, timings, or processes
+- UI designed as a **conversation experience**, aligned with HostelMate's dark futuristic theme
 
 ---
 
-## 🎯 Target Users
+## 🧰 Tech Stack
 
-- **Students**: Easily file complaints, track resolutions, and recover lost items.
-- **Caretakers/Wardens**: Manage assigned complaints, update statuses, and track workload.
-
----
-
-## 🚧 Current Status
-
-- ✅ Core UI dashboard implemented
-- 🟡 Complaint & Lost/Found screens under development
-- 🔜 Firebase integration (Auth + Firestore)
-- 🔜 AI-powered tagging and matching
+| Feature                   | Technology                          |
+|---------------------------|--------------------------------------|
+| App Platform              | Flutter                              |
+| Backend & Database        | Firebase Firestore                   |
+| Hosting & Functions       | Firebase Hosting, Cloud Functions    |
+| Authentication (Planned) | Firebase Auth                        |
+| AI Integration            | Gemini API via Google AI Studio      |
+| Emulator & IDE            | VS Code + Android Emulator           |
 
 ---
 
-## 🧠 Why This Matters
+## 👥 Target Users
 
-This project was born out of personal experience as a former **Maintenance Coordinator at IIT Mandi**. HostelMate solves a high-friction, real-world problem using modern cloud and AI technology.
-
----
-
-## 📌 Project Goals
-
-- Improve transparency and efficiency in hostel issue management
-- Centralize lost and found reporting
-- Demonstrate meaningful application of Google’s ecosystem through GDG Lead application
+- **Students**: File complaints, track them, find lost items, get help from the AI bot
+- **Caretakers/Wardens**: View, manage, and resolve complaints efficiently
 
 ---
 
-## 📸 Screenshots
+## 🎯 Key Features
 
-![alt text](image.png)
-![alt text](image-1.png)
----
-
-## 📬 Contact
-
-**Developer**: Gopika Chauhan  
-**Email**: gopikachauhan1819@gmailcom  
-**LinkedIn**: https://www.linkedin.com/in/gopika-chauhan18/
-**GitHub**: Cephei18
+- 📋 Complaint filing and tracking  
+- 🧠 **Hostel AI Bot powered by Gemini**  
+- 🧳 Lost & Found submission and viewing  
+- 👤 User profile stored locally and in Firestore  
+- 🚀 Clean and responsive UI (dark theme, scrollable dashboard, modern cards)
 
 ---
 
+## 🚧 Project Status
+
+| Feature                       | Status      |
+|------------------------------|-------------|
+| Core Dashboard UI            | ✅ Complete |
+| Firebase Firestore Integration | ✅ Done    |
+| Complaint System             | ✅ Done     |
+| Lost & Found Screen          | ✅ Done     |
+| Gemini AI Bot                | ✅ Integrated |
+| Persistent Login/Profile     | ✅ Done     |
+| Admin Panel                  | ⏳ Upcoming |
+| Firebase Auth                | ⏳ Upcoming |
+| Google Calendar API          | ⏳ Upcoming |
+| Cloud-based Mess Info        | ⏳ Upcoming |
+
+---
+
+## 🌱 Future Goals
+
+- 🔐 Full **Login/Signup** with Firebase Auth  
+- 📅 **Google Calendar Integration** to show hostel events and holidays  
+- 🍽️ Mess schedule & menu updates using **Google Cloud Functions + Firestore**  
+- 🎓 Training the **Gemini AI bot** with custom hostel knowledge base  
+- 📊 Admin-side analytics and notifications
+
+---
+
+## 💡 Why This Project?
+
+Built by a **former Maintenance Coordinator at IIT Mandi**, HostelMate is inspired by real hostel challenges. It transforms how students and staff handle day-to-day issues with transparency and technology.
+
+---
+
+## 🧪 Demo Screenshots
+
+![Dashboard](image.png)  
+
+![AI Bot](image-1.png)
+
+---
+
+## 👩‍💻 Developer
+
+**Gopika Chauhan**  
+📧 gopikachauhan1819@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/gopika-chauhan18/)  
+💻 [GitHub](https://github.com/Cephei18)
+
+---

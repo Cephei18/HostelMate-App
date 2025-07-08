@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'complaint_screen.dart';
 import 'track_complaints_screen.dart';
 import 'lostfound_screen.dart';
+import 'ai_bot_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -94,6 +95,33 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                       _DashboardTile(
+                        icon: Icons.receipt_long,
+                        label: 'Track Complaints',
+                        color: Colors.lightBlueAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const TrackComplaintsScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      _DashboardTile(
+                        icon: Icons.smart_toy,
+                        label: 'Ask Hostel AI',
+                        color: Colors.tealAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AIBotScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      _DashboardTile(
                         icon: Icons.search,
                         label: 'Lost & Found',
                         color: Colors.purpleAccent,
@@ -113,24 +141,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           // Placeholder for notifications functionality
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Calender feature coming soon!')),
-                          );
-                        },
-                      ),
-          
-                      _DashboardTile(
-                        icon: Icons.receipt_long,
-                        label: 'Track Complaints',
-                        color: Colors.lightBlueAccent,
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const TrackComplaintsScreen(),
+                            const SnackBar(
+                              content: Text('Calender feature coming soon!'),
                             ),
                           );
                         },
                       ),
+
+                      
                       _DashboardTile(
                         icon: Icons.feedback,
                         label: 'Feedback',
@@ -138,7 +156,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           // Placeholder for notifications functionality
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Feedback feature coming soon!')),
+                            const SnackBar(
+                              content: Text('Feedback feature coming soon!'),
+                            ),
                           );
                         },
                       ),
@@ -149,7 +169,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           // Placeholder for settings functionality
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Settings feature coming soon!')),
+                            const SnackBar(
+                              content: Text('Settings feature coming soon!'),
+                            ),
                           );
                         },
                       ),
@@ -161,7 +183,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           // Placeholder for notifications functionality
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Mess feature coming soon!')),
+                            const SnackBar(
+                              content: Text('Mess feature coming soon!'),
+                            ),
                           );
                         },
                       ),
@@ -173,7 +197,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           // Placeholder for important contacts functionality
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Contacts feature coming soon!')),
+                            const SnackBar(
+                              content: Text('Contacts feature coming soon!'),
+                            ),
                           );
                         },
                       ),
@@ -267,7 +293,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const SizedBox(height: 6),
-            Text('Room No: $room', style: const TextStyle(color: Colors.white70)),
+            Text(
+              'Room No: $room',
+              style: const TextStyle(color: Colors.white70),
+            ),
             const SizedBox(height: 6),
             const Text(
               'Caretaker Mrs Parul: 900235610',
