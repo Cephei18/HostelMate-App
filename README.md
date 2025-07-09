@@ -95,6 +95,7 @@ These lead to frustration, delays, and a lack of accountability.
 ## 💡 Why This Project?
 
 Built by a **former Maintenance Coordinator at IIT Mandi**, HostelMate is inspired by real hostel challenges. It transforms how students and staff handle day-to-day issues with transparency and technology.
+Gopika Chauhan
 
 ---
 
