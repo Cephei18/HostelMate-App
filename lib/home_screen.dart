@@ -126,10 +126,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         label: 'Lost & Found',
                         color: Colors.purpleAccent,
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LostFoundScreen(),
+                           // Placeholder for notifications functionality
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Lost & Found feature coming soon!'),
                             ),
                           );
                         },
