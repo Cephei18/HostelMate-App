@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'splash_screen.dart'; // ✅ Make sure this exists
+import 'firebase_options.dart'; // ✅ add this line
+import 'splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform, // ✅ updated line
+  );
   runApp(const HostelHelpApp());
 }
 
@@ -19,9 +22,9 @@ class HostelHelpApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        scaffoldBackgroundColor: const Color(0xFF1F1D2B), // matches your theme
+        scaffoldBackgroundColor: const Color(0xFF1F1D2B),
       ),
-      home: const SplashScreen(), // ✅ This decides flow based on saved user
+      home: const SplashScreen(),
     );
   }
 }
